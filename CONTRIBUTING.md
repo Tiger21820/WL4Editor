@@ -1,4 +1,4 @@
-# WL4Editor's Contributor's Guide!
+# WL4Editor's Contributor's Guide
 Here are some guidelines for contributing to this repository:
 
 ## In a Nutshell:

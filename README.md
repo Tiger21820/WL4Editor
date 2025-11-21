@@ -1,4 +1,4 @@
-# WL4Editors
+# WL4Editor
 
 ![WL4Editor icon](./images/WL4Editor.png)
 

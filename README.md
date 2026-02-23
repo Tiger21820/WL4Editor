@@ -6,7 +6,7 @@
 [![Github All Releases](https://img.shields.io/github/downloads/wario-land/WL4Editor/total.svg)](https://github.com/wario-land/WL4Editor/releases)
 
 This repository contains the most feature complete Wario Land 4 Editor yet.
-ssssssssssssssssssssssss
+
 Based on old and deprecated projects, we made a new one and are trying to make it the best one possible.
 
 ![WL4Editor sample image](./images/Sample.png?s=1200)

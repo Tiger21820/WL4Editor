@@ -177,6 +177,10 @@ namespace LevelComponents
         int GetCurrentEntitySetID() { return CurrentEntitySetID; }
         bool GetEntityListDirty(int difficulty) { return EntityListDirty[difficulty]; }
         std::vector<struct EntityRoomAttribute> GetEntityListData(int difficulty) { return EntityList[difficulty]; }
+        void SetEntityListData(int difficulty, const std::vector<struct EntityRoomAttribute> &list)
+        {
+            EntityList[difficulty] = list;
+        }
         unsigned int GetLayer1Height() { return layers[1]->GetLayerHeight(); }
         unsigned int GetLayer1Width() { return layers[1]->GetLayerWidth(); }
         unsigned int GetLayer0Width() { return layers[0]->GetLayerWidth(); }
@@ -195,11 +199,26 @@ namespace LevelComponents
         bool IsBGLayerEnabled() { return RoomHeader.Layer3MappingType; }
         bool IsLayer0ColorBlendingEnabled() { return GetLayer0ColorBlending(RoomHeader.RenderEffect); }
         int GetLayer2MappingParam() { return RoomHeader.Layer2MappingType; }
+        unsigned int GetLayerDataPtr(int layerId) { return layers[layerId]->GetDataPtr(); }
+        QString GetCameraControlRecordsString();
+        QString GetRoomHeaderHex();
+        void SetRoomHeaderFromHex(QString hex);
 
         // Setters
-        void SetRoomID(int new_room_id) { RoomID = new_room_id; }
         bool AddEntity(int XPos, int YPos, int localEntityTypeId, int difficulty = -1);
         void DeleteCameraLimitator(int index);
+        void SetCameraControlRecords(std::vector<struct __CameraControlRecord *> newRecords)
+        {
+            for (auto *rec : CameraControlRecords)
+                delete rec;
+            CameraControlRecords.clear();
+            for (auto *rec : newRecords)
+            {
+                auto *newRec = new __CameraControlRecord();
+                memcpy(newRec, rec, sizeof(__CameraControlRecord));
+                CameraControlRecords.push_back(newRec);
+            }
+        }
         void DeleteEntity(int index);
         void DeleteEntity(int difficulty, int index);
         void ClearEntitylist(int difficulty);
